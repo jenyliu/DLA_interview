@@ -10,6 +10,10 @@ https://github.com/pytorch/examples/tree/master/vae
 
 https://arxiv.org/pdf/1312.6114.pdf
 
+#Installation changed:
+Install pytorch from here:
+https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/
+
 ## Comments
 
 One thing I noticed about VAE is that it works well on MNIST but fails to work on others, there's a high level of compression in VAE since it encodes a high dimensional data space to a lower dimensional Gaussian. This method works well for MNIST since the labels can be identified from as little as one pixel, as demonstrated here: https://gist.github.com/dgrtwo/aaef94ecc6a60cd50322c0054cc04478.
