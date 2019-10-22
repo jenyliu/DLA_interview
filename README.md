@@ -7,6 +7,7 @@ Something that I looked at in my lab at and didn't get an opportunity to impleme
 The original Variational Autoencoder paper and code implemeted in pytorch.
 
 https://github.com/pytorch/examples/tree/master/vae
+
 https://arxiv.org/pdf/1312.6114.pdf
 
 
