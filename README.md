@@ -39,3 +39,11 @@ The conditional variational autoencoder always prints out the correct digit or a
 
 Due to the latent variables selected in the KL loss and the reconstruction loss, the loss for the conditional variational autoencoder is also lower than the variational autoencoder. 
 Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.pdf and potentially generating labeled images since it produces sharper images and seems to be a method that creates images with the same level of sharpness as Generative Adversarial Networks, without being quite as sensitive to hyperparameters.
+
+## Demo
+
+For a short version of the code. Open the terminal on the computer and cd into the folder with demo.py
+
+'''
+python3 demo.py
+'''
