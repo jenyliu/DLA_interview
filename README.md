@@ -37,11 +37,17 @@ A few experiments were run on the CIFAR10 data set as well, but due to poor perf
 ## Results
 The conditional variational autoencoder always prints out the correct digit or article of clothing for the FashionMNIST data. This is likely becasue the label data is encoded in the input of the encoder. When the latent space is generated, it enocdes each digit as a separate Gaussian function where Z\~N(0,I). In the vanilla variational autoencoder, all digits are encoded to the same Z\~N(0,I), where different digits are clustered. This makes points that line near the boundaries of different digits less discernible. When checking even later samples of reconstructed test points, examples of digits that differ in value can be seen.
 
+In all figures of reconstructed images, the first row are original images taken from the MNIST datasets. The second row are those reconstructed by the conditional Variational Autoencoder and the last row are reconstructions done by the vanilla VAE.
+
+![MNIST reconstructions](resultsMNIST/reconstruction_199.png)
+
+In the above figure the first and last digits is clearly a 4 and the conditinoal VAE is able to reconstruct a 4, the images reconstructed by the vanilla VAE are closer to 9's. Because there is an additional set of one hot encoded labels in the conditional vae, the Gaussian distibuted latent variable space does not overlap, whereas with the vanilla VAE the latent space points representing 4's and 9's have some overlap, so the model may generate incorrect digits.
+
 Due to the latent variables selected in the KL loss and the reconstruction loss, the loss for the conditional variational autoencoder is also lower than the variational autoencoder. 
 
 
 ![FMNIST reconstructions](resultsFMNIST/reconstruction_199.png)
-
+![KMNIST reconstructions](resultsKMNIST/reconstruction_199.png)
 ## Future Work
 Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.pdf and potentially generating labeled images since it produces sharper images and seems to be a method that creates images with the same level of sharpness as Generative Adversarial Networks, without being quite as sensitive to hyperparameters.
 
