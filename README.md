@@ -29,11 +29,9 @@ To implement a conditional variational autoencoder, the original varaiational au
 
 The CVAE network is further modified to have the label data concatenated to the inputs and the reparametrized latent variables. The loss function is still calculated over the same features and does not change with label data.
 
+All experiments were run for 200 epochs with a learning rate of 0.001. The hidden layer on the encoder network and the decoder network have 500 nodes as described in the variational autoencoder paper for experiments done on the MNIST data. Changing the number of nodes did not seem to make any discernible difference on the images as seen by a person, so there was no need to adjust. The latent variable size for the MNIST data set was set to 2. Since the KMNIST and FashionMNIST datasets had more detail, the latent variable size was adjusted to 10.
 
-## Comments
-
-One thing I noticed about VAE is that it works well on MNIST but fails to work on others, there's a high level of compression in VAE since it encodes a high dimensional data space to a lower dimensional Gaussian. This method works well for MNIST since the labels can be identified from as little as one pixel, as demonstrated here: https://gist.github.com/dgrtwo/aaef94ecc6a60cd50322c0054cc04478.
-
+A few experiments were run on the CIFAR10 data set as well, but due to poor performance of variational autoencoders on these images, those results were not pursued in this project. 
 
 
 ## Results
