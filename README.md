@@ -34,8 +34,10 @@ The CVAE network is further modified to have the label data concatenated to the 
 
 One thing I noticed about VAE is that it works well on MNIST but fails to work on others, there's a high level of compression in VAE since it encodes a high dimensional data space to a lower dimensional Gaussian. This method works well for MNIST since the labels can be identified from as little as one pixel, as demonstrated here: https://gist.github.com/dgrtwo/aaef94ecc6a60cd50322c0054cc04478.
 
-Will also check performance on FashionMNIST, less used data set.
+
 
 ## Results
+The conditional variational autoencoder always prints out the correct digit or article of clothing for the FashionMNIST data. This is likely becasue the label data is encoded in the input of the encoder. When the latent space is generated, it enocdes each digit as a separate Gaussian function where Z~N(0,I). In the vanilla variational autoencoder, all digits are encoded to the same Z~N(0,I), where different digits are clustered. This makes points that line near the boundaries of different digits less discernible. When checking even later samples of reconstructed test points, examples of digits that differ in value can be seen.
 
+Due to the latent variables selected in the KL loss and the reconstruction loss, the loss for the conditional variational autoencoder is also lower than the variational autoencoder. 
 Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.pdf and potentially generating labeled images since it produces sharper images and seems to be a method that creates images with the same level of sharpness as Generative Adversarial Networks, without being quite as sensitive to hyperparameters.
