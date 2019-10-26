@@ -3,6 +3,13 @@
 ## Introduction
 The objective of this project is to learn more about conditional generative models. Having worked with GANs, it seems beneficial to study more about adding additional descriptive information with the input image to produce models that are able to distinctly represent specific subjects in the generated data. It seems to be a part of how users can select specific features or labels for the model to generate. As an early step of looking at this and taking into account the limitations of resources and time, this project will be experimenting with the vanilla variational autoencoder and a conditional variational autoencoder.
 
+
+## Installation changed:
+Install pytorch from here:
+https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/
+
+For the Jetson TX2, Pytorch cannot be installed using the method described on the above Github page. An alternate version for the GPU must be downloaded from the NVIDIA site as indicated by the link above. 
+
 ## Process
 The original Variational Autoencoder paper and code implemeted in pytorch and the accompanying paper which is initially applied to the MNIST. Since MNIST is a dataset that has been implemented many times and the different classes can be identified with only a few pixels, the variational autoencoder will also be applied to the FashionMNIST data and KMNIST data to have a better understanding of performance.
 
@@ -11,30 +18,17 @@ https://arxiv.org/pdf/1312.6114.pdf
 
 https://github.com/pytorch/examples/tree/master/vae
 
+The paper on the conditional variational autoencoder and it's loss function is as follows
+https://pdfs.semanticscholar.org/3f25/e17eb717e5894e0404ea634451332f85d287.pdf
 
-# Installation changed:
-Install pytorch from here:
-https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/
+To implement a conditional variational autoencoder, the original varaiational autoencoder is modified several ways:
 
-For the Jetson TX2, Pytorch cannot be installed using the method described on the above Github page. An alternate version for the GPU must be downloaded from the NVIDIA site as indicated by the link above. 
+-The input size of the encoder neural network is increased by the number of labels. The digit label is one hot encoded and concatenated to the initial input size of 28 * 28 = 784 so the input of the encoder network is 28 * 28 + 10 - 794.
+-The input size of the decoder neural network is increased by the number of labels. For the original MNIST network a latent variable size of 2 was chosen, so the input to the decoder network is now 2 + 10 = 12.
+-All additional layers and nodes of the networks remain the same
 
-## Process
-The original Variational Autoencoder paper and code implemeted in pytorch and the accompanying paper. Originally implemented on MNIST.
+The CVAE network is further modified to have the label data concatenated to the inputs and the reparametrized latent variables. The loss function is still calculated over the same features and does not change with label data.
 
-https://github.com/pytorch/examples/tree/master/vae
-
-https://arxiv.org/pdf/1312.6114.pdf
-
-To implement a conditional variational autoencoder, the input size of the encoder neural network is increased by the number of labels. The digit label is one hot encoded and concatenated to the initial input size of 28 * 28 = 784. The number of hidden nodes and the output size of the encoder network is left as is. The input size of the decoder network is the latent variable size (output of encoder) plus the label. The resulting output should be equivalent to the size of the image.
-
-Since the original
-
-
-
-
-
-
-Adjusted original VAE to use FashionMNISt, appears to generate images that are recognizable. What does changing the size of the latent space and increasing the training length do?
 
 ## Comments
 
