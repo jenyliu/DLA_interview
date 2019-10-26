@@ -1,7 +1,16 @@
 # DLA_interview
 
 ## Introduction
-The objective of this project is to learn more about conditional generative models. Having worked with GANs and attempted to generate new data, I am curious about including some label information into the input along with the image information can improve realism in generated samples. As an early step of looking to this, I would like to play around with conditional Variational Autoencoders.
+The objective of this project is to learn more about conditional generative models. Having worked with GANs, it seems beneficial to study more about adding additional descriptive information with the input image to produce models that are able to distinctly represent specific subjects in the generated data. It seems to be a part of how users can select specific features or labels for the model to generate. As an early step of looking at this and taking into account the limitations of resources and time, this project will be experimenting with the vanilla variational autoencoder and a conditional variational autoencoder.
+
+## Process
+The original Variational Autoencoder paper and code implemeted in pytorch and the accompanying paper which is initially applied to the MNIST. Since MNIST is a dataset that has been implemented many times and the different classes can be identified with only a few pixels, the variational autoencoder will also be applied to the FashionMNIST data and KMNIST data to have a better understanding of performance.
+
+Original VAE paper and accompanying code example
+https://arxiv.org/pdf/1312.6114.pdf
+
+https://github.com/pytorch/examples/tree/master/vae
+
 
 # Installation changed:
 Install pytorch from here:
