@@ -44,6 +44,6 @@ Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.
 
 For a short version of the code. Open the terminal on the computer and cd into the folder with demo.py
 
-'''
+```
 python3 demo.py
-'''
+```
