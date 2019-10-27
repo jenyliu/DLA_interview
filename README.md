@@ -43,8 +43,16 @@ In all figures of reconstructed images, the first row are original images taken 
 
 In the above figure the first and last digits is clearly a 4 and the conditinoal VAE is able to reconstruct a 4, the images reconstructed by the vanilla VAE are closer to 9's. Because there is an additional set of one hot encoded labels in the conditional vae, the Gaussian distibuted latent variable space does not overlap, whereas with the vanilla VAE the latent space points representing 4's and 9's have some overlap, so the model may generate incorrect digits.
 
-Due to the latent variables selected in the KL loss and the reconstruction loss, the loss for the conditional variational autoencoder is also lower than the variational autoencoder. 
+The conditional vraiational autoencoder also allows for selecting which digit will be represented by the generated data.
 
+![MNIST VAE](resultsMNIST/VAE_sample_199.png)
+![MNIST CVAE](resultsMNIST/CVAE_sample_199.png)
+
+In addition to selecting the label for the data represented, the loss function for the CVAE is improved over the VAE. This seems to be due to the additional condition in the estimated generative model. In the calculation of the loss, while the size of the space, it is calculated on is the same for both functions, the CVAE has an extra condition on the estimate for both the reconstruction loss and the KL loss.
+
+![MNIST](MNIST.png) ![FMNIST](FMNIST.png)
+
+The following reconstructions were generated for the Fashion MNIST data and the KMNIST data.
 
 ![FMNIST reconstructions](resultsFMNIST/reconstruction_199.png)
 ![KMNIST reconstructions](resultsKMNIST/reconstruction_199.png)
@@ -54,8 +62,9 @@ Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.
 
 ## Demo
 
-For a short version of the code. Open the terminal on the computer and cd into the folder with demo.py
+For a short version of the code. Open the terminal on the computer and cd into the folder with demo.py and run in python3 with the following command. The demo trains on the MNIST data for 10 epochs and with 6000 training samples and 1000 training samples.
 
 ```
+cd vae
 python3 demo.py
 ```
