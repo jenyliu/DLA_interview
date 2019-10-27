@@ -48,16 +48,20 @@ The conditional vraiational autoencoder also allows for selecting which digit wi
 ![MNIST VAE](resultsMNIST/VAE_sample_199.png)
 ![MNIST CVAE](resultsMNIST/CVAE_sample_199.png)
 
-In addition to selecting the label for the data represented, the loss function for the CVAE is improved over the VAE. This seems to be due to the additional condition in the estimated generative model. In the calculation of the loss, while the size of the space, it is calculated on is the same for both functions, the CVAE has an extra condition on the estimate for both the reconstruction loss and the KL loss.
+In addition to selecting the label for the data represented, the loss function for the CVAE is improved over the VAE. This seems to be due to the additional condition in the estimated generative model. In the calculation of the loss, while the size of the space, it is calculated on is the same for both functions, the CVAE is conditioned on both the input and the label, this additional information decreases the loss for all data sets.
 
-![MNIST](MNIST.png) ![FMNIST](FMNIST.png)
+![MNIST](MNIST.png) ![FMNIST](FMNIST.png) ![KMNIST](KMNIST.png)
 
-The following reconstructions were generated for the Fashion MNIST data and the KMNIST data.
+
+The following reconstructions were generated for the Fashion MNIST data and the KMNIST data at 199 epochs.
 
 ![FMNIST reconstructions](resultsFMNIST/reconstruction_199.png)
 ![KMNIST reconstructions](resultsKMNIST/reconstruction_199.png)
+
 ## Future Work
-Ideally, I would like to look into Real NVP at https://arxiv.org/pdf/1605.08803.pdf and potentially generating labeled images since it produces sharper images and seems to be a method that creates images with the same level of sharpness as Generative Adversarial Networks, without being quite as sensitive to hyperparameters.
+The variational autoencoder was chosen for this proejct due to resources and ease of implementation. The work done here only added a discrete variables (labels), but some of the images I've worked with contained information that would not be a label (angle). I think it would be interesting to see if this would potentially improve performance if there was some way to add this information to the input in image processing problems.
+
+I initially wanted to try out using Real NVP at https://arxiv.org/pdf/1605.08803.pdf and potentially generating labeled images since it produces sharper images than the variational autoencoder, but consists of a similar structure, where we tranform data to a Gaussian distribution and back. But this technique took a little too long to run. I think it may be interesting to create a conditional real NVP model.
 
 
 ## Demo
