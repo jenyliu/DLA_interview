@@ -68,3 +68,9 @@ For a short version of the code. Open the terminal on the computer and cd into t
 cd vae
 python3 demo.py
 ```
+
+or open terminal and run
+
+```
+bash demo.sh
+```
