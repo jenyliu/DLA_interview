@@ -8,7 +8,7 @@ from torchvision import datasets, transforms
 from torchvision.utils import save_image
 import numpy as np
 import matplotlib.pyplot as plt
-
+from PIL import Image
 import math
 
 parser = argparse.ArgumentParser(description='VAE MNIST Example')
@@ -234,6 +234,12 @@ if __name__ == "__main__":
             save_image(sample2.view(80, 1, 28, 28),
                        'results/CVAE_sample_' + str(epoch) + '.png')
     epochs_list = range(1, args.epochs + 1)
+    img = Image.open('results/reconstruction_'+str(epoch) + '.png')
+    img.show()
+    img2 = Image.open('results/VAE_sample_'+str(epoch) + '.png')
+    img2.show()
+    img3 = Image.open('results/CVAE_sample_'+str(epoch) + '.png')
+    img3.show()
     plt.plot(epochs_list, train2_lossList, "r", epochs_list, test2_lossList, "r--",
          epochs_list, train_lossList, "b", epochs_list, test_lossList, "b--")
     plt.xlabel("Epoch")
@@ -241,3 +247,4 @@ if __name__ == "__main__":
     plt.title("Loss Function - MNIST")
     plt.legend(["Train-VAE", "Test-VAE", "Train-CVAE", "Test-CVAE"])
     plt.show()
+
