@@ -58,6 +58,10 @@ The following reconstructions were generated for the Fashion MNIST data and the 
 ![FMNIST reconstructions](resultsFMNIST/reconstruction_199.png)
 ![KMNIST reconstructions](resultsKMNIST/reconstruction_199.png)
 
+There is some improvement in the FMNIST data and KMNIST data, this may be improved with changes in the latent variable space. The VAE inherently does not produce sharp images, and the CVAE does not improve this significantly. As seen in the FMNIST images, detailed patterns on the clothing is lost in reconstructions. It's a good idea to look at otehr generative models for these datasets.
+
+The code was also run on the CIFAR10 data, but a few runs stopped due to running out of RAM, and any reconstructions produced were unrecognizable for both the VAE and CVAE.
+
 ## Future Work
 The variational autoencoder was chosen for this proejct due to resources and ease of implementation. The work done here only added a discrete variables (labels), but some of the images I've worked with contained information that would not be a label (angle). I think it would be interesting to see if this would potentially improve performance if there was some way to add this information to the input in image processing problems.
 
